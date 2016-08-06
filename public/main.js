@@ -54,7 +54,7 @@ function createHttpObject() {
             httpObj = createHttpObject();  
             if (httpObj) {  
                 // GETメソッドでsample101.txtﾌｧｲﾙを非同期で開く  
-                httpObj.open("GET", "../site/wwwroot/public/log/log.dat", true);  
+                httpObj.open("GET", "../site/wwwroot/public/log/log.txt", true);  
                 httpObj.onreadystatechange = function () {  
                     // 状態が変わったときに実行する処理を記述  
                     if (httpObj.readyState == 4) {  
