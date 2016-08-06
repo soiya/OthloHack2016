@@ -61,7 +61,6 @@ function createHttpObject() {
                         if (httpObj.status == 200) {  
                             // 正常に受信完了できたとき読み込んだテキストを処理する  
                             var res = httpObj.responseText;  
-                            alert(res);  
                         } else {  
                             alert("データ読み込みに失敗しました。(" + httpObj.status + ":" + httpObj.statusText + ")");  
                             return;  
@@ -89,6 +88,8 @@ function createHttpObject() {
   // Sets the client's username
   function setUsername () {
     username = cleanInput($usernameInput.val().trim());
+
+    // logの読み込みを行っている
     submitReq();
 
     // If the username is valid
@@ -147,6 +148,11 @@ function createHttpObject() {
       .data('username', data.username)
       .addClass(typingClass)
       .append($usernameDiv, $messageBodyDiv);
+
+    // messege保存場所
+    var fs = require('fs');
+    fs.writeFile('../../../log/log.json', JSON.stringify(data, null, '    '));
+
 
     addMessageElement($messageDiv, options);
   }
@@ -288,6 +294,7 @@ function createHttpObject() {
 
   // Whenever the server emits 'new message', update the chat body
   socket.on('new message', function (data) {
+    
     addChatMessage(data);
   });
 
