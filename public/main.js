@@ -90,7 +90,6 @@ function createHttpObject() {
     username = cleanInput($usernameInput.val().trim());
 
     // logの読み込みを行っている
-    submitReq();
 
     // If the username is valid
     if (username) {
