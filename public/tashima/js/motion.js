@@ -1,24 +1,21 @@
 $(function () {
 	var $button = $('.btn-group');	//ボタン
 	var $listItem = $('ul#comments > li');	//リストアイテム(コメント)
-	var $searchInput = $('.search');	//入力窓
+	var $messageInput = $('#message');	//入力窓
 
 	//入力窓のフォーカスによるボタンのトグル
-	$searchInput.on('focus', function() {
-		console.log('focusing input window.');
+	$messageInput.on('focus', function() {
 		$button.css('visibility','visible');
 	});
-	$searchInput.on('blur', function() {
+	$messageInput.on('blur', function() {
 		//入力窓が空欄ならボタンを消す(入力中かどうか判断する)
-		if ($('footer>input.search').val()==='') {
-			console.log('bluring input window.');
+		if ($('footer>input#message').val()==='') {
 			$button.css('visibility','hidden');
 		}
 	});
 	//リストアイテムに星をつける
 	$listItem.on('click', function() {
 		var index = $listItem.index(this)+1;
-		console.log(index+' th-child clicked!');
 		//星span取得
 		var $star = $(this).children('i');
 		//星をトグルでつけたり消したりする（枠星のクラス削除→星のクラス追加）
@@ -31,16 +28,15 @@ $(function () {
 		}
 	});
 	//ヘッダ（見出し）
-	$('header').on('keypress', function(){
+	$('header').on('keydown keyup change', function(){
 		$headerText = $('header').text();
 		$headerTextLength = $headerText.length;
-		console.log('changed!!: '+$headerTextLength);
-		//6文字より多い場合はサイズを縮小する（15文字程度まで対応可）
-		if ($headerTextLength > 6) {
-			var $fixedFontSize = Math.abs(36 - $headerTextLength/1.01)+"px";
-			$('header').css('font-size', $fixedFontSize);
-		} else {
-			$('header').css('font-size', '36px');
-		}
+		//文字数に比例してサイズを縮小する（15文字程度まで対応可）
+		var $fixedFontSize = Math.abs(36 - $headerTextLength/1.2)+"px";
+		$('header').css(
+			'font-size', $fixedFontSize,
+			'line-height', $fixedFontSize
+		);
+		console.log($fixedFontSize);
 	})
 });

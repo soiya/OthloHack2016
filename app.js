@@ -3,11 +3,10 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , io = require('socket.io')
- 
+
 var app = express()
   , server = require('http').createServer(app)
   , io = io.listen(server);
-
 var mysql = require('mysql');
 var TABLE = 'math';
 var client = mysql.createConnection({
@@ -16,7 +15,7 @@ var client = mysql.createConnection({
   password : 'nao0426',
   database: 'chatlog'
 });
- 
+
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
   app.set('views', __dirname + '/views');
@@ -28,32 +27,30 @@ app.configure(function(){
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
 });
- 
+
 app.configure('development', function(){
   app.use(express.errorHandler());
 });
- 
+
 server.listen(app.get('port'))
  
 io.sockets.on('connection', function(socket) {
+  
   //接続が確立された時に呼ばれる
-  // socket.on('log connect', function () {
-  //   client.query(
-  //     'select comment from ' + TABLE,
-  //     function (err, result, field) {
-  //       if (err) {
-  //         throw err;
-  //       }
-  //       console.log(result);
-  //       // client.end();
-  //       socket.emit('log push', result);
-  //     });
-  //   });
-
-  // socket.on('log send', function(str){
-  //   console.log(str);
-  //   sockets.emit('log receive', str);
-  // });
+  socket.on('log connect', function () {
+    client.query(
+      'select comment from ' + TABLE,
+      function (err, result, field) {
+        if (err) {
+          throw err;
+        }
+        for(var i = 0; i < 6; i++){
+           io.sockets.emit('log-receive', result[i].comment);
+        }
+        // client.end();
+        
+      });
+    });
 
   //socket.on(eventname, callback) でイベントを検知(=データの受信)を行います。
   socket.on('message:send', function(data) {
