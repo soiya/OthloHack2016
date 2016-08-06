@@ -1,10 +1,15 @@
 var socket = io.connect();
 
+
 //接続に成功すると'connect'イベントが発火する
 //コンストラクタみたいなやつ
 socket.on('connect',function() {
   console.log('サーバーと接続しました。');
-  
+
+});
+
+socket.on('log receive', function (str) {
+  $("div#chat-area").prepend("<div>" + str + "</div>");
 });
  
 //socket.on(eventname, callback) でイベントを検知(=データの受信)を行います。
@@ -16,5 +21,6 @@ socket.on('message:receive', function (data) {
 function send() {
   var msg = $("input#message").val();
   $("input#message").val("");
+  //サーバーへデータの送信
   socket.emit('message:send', { message: msg });
 }

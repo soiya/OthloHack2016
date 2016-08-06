@@ -7,6 +7,15 @@ var express = require('express')
 var app = express()
   , server = require('http').createServer(app)
   , io = io.listen(server);
+
+var mysql = require('mysql');
+var TABLE = 'math';
+var client = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : 'nao0426',
+  database: 'chatlog'
+});
  
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
@@ -26,12 +35,30 @@ app.configure('development', function(){
  
 server.listen(app.get('port'))
  
-io.sockets.on('connection', function(socket) 
-{
+io.sockets.on('connection', function(socket) {
+  //接続が確立された時に呼ばれる
+  // socket.on('log connect', function () {
+  //   client.query(
+  //     'select comment from ' + TABLE,
+  //     function (err, result, field) {
+  //       if (err) {
+  //         throw err;
+  //       }
+  //       console.log(result);
+  //       // client.end();
+  //       socket.emit('log push', result);
+  //     });
+  //   });
+
+  // socket.on('log send', function(str){
+  //   console.log(str);
+  //   sockets.emit('log receive', str);
+  // });
+
   //socket.on(eventname, callback) でイベントを検知(=データの受信)を行います。
-  socket.on('message:send', function(data) 
-  {
+  socket.on('message:send', function(data) {
     //自分を含む全員宛てにメッセージを送信します。通常のチャットの発言に使える処理です。
     io.sockets.emit('message:receive', { message: data.message });
   });
+  
 });
