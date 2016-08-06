@@ -148,10 +148,8 @@ function createHttpObject() {
       .addClass(typingClass)
       .append($usernameDiv, $messageBodyDiv);
       addMessageElement($messageDiv, options);
-          
-    // messege保存場所
-    var fs = require('fs');
-    fs.writeFile('../../../log/log.json', JSON.stringify(data, null, '    '));
+
+   
 
 
     
@@ -218,7 +216,7 @@ function createHttpObject() {
 
       setTimeout(function () {
         var typingTimer = (new Date()).getTime();
-        var timeDiff = typingTimer - lastTypingTime;
+        var timeDiff = typingTifmer - lastTypingTime;
         if (timeDiff >= TYPING_TIMER_LENGTH && typing) {
           socket.emit('stop typing');
           typing = false;
