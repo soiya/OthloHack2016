@@ -18,12 +18,63 @@ $(function() {
 
   // Prompt for setting a username
   var username;
+  var data;
   var connected = false;
   var typing = false;
   var lastTypingTime;
   var $currentInput = $usernameInput.focus();
 
   var socket = io();
+
+//  Logを残す
+// http://www4.airnet.ne.jp/hasikun/webtech/ajax/ajax101.html
+function createHttpObject() {  
+            try {  
+                if (window.XMLHttpRequest) {  
+                    // Win(moz1,ff1,op8,ie7),Mac,Linux  
+                    httpObj = new XMLHttpRequest();  
+                } else if (window.ActiveXObject) {  
+                    // Win(ie4,5,6)  
+                    try {  
+                        httpObj = new ActiveXObject("Msxml2.XMLHTTP");  
+                    } catch (e1) {  
+                        httpObj = new ActiveXObject("Microsoft.XMLHTTP");  
+                    }  
+                } else {  
+                    httpObj = null;  
+                }  
+            } catch (e2) {  
+                httpObj = null;  
+            }  
+            return httpObj;  
+        }  
+  
+        function submitReq() {  
+            // XMLHttpRequestオブジェクト取得  
+            httpObj = createHttpObject();  
+            if (httpObj) {  
+                // GETメソッドでsample101.txtﾌｧｲﾙを非同期で開く  
+                httpObj.open("GET", "../public/log/log.dat", true);  
+                httpObj.onreadystatechange = function () {  
+                    // 状態が変わったときに実行する処理を記述  
+                    if (httpObj.readyState == 4) {  
+                        if (httpObj.status == 200) {  
+                            // 正常に受信完了できたとき読み込んだテキストを処理する  
+                            var res = httpObj.responseText;  
+                            alert(res);  
+                        } else {  
+                            alert("データ読み込みに失敗しました。(" + httpObj.status + ":" + httpObj.statusText + ")");  
+                            return;  
+                        }  
+                    }  
+                }  
+                // 送信処理実行  
+                httpObj.send('');  
+            }  
+        }  
+// ---
+
+
 
   function addParticipantsMessage (data) {
     var message = '';
@@ -38,6 +89,7 @@ $(function() {
   // Sets the client's username
   function setUsername () {
     username = cleanInput($usernameInput.val().trim());
+    submitReq();
 
     // If the username is valid
     if (username) {
@@ -236,7 +288,6 @@ $(function() {
 
   // Whenever the server emits 'new message', update the chat body
   socket.on('new message', function (data) {
-    data += "aaa";
     addChatMessage(data);
   });
 
