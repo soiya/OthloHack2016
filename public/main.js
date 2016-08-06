@@ -147,13 +147,14 @@ function createHttpObject() {
       .data('username', data.username)
       .addClass(typingClass)
       .append($usernameDiv, $messageBodyDiv);
-
+      addMessageElement($messageDiv, options);
+          
     // messege保存場所
     var fs = require('fs');
     fs.writeFile('../../../log/log.json', JSON.stringify(data, null, '    '));
 
 
-    addMessageElement($messageDiv, options);
+    
   }
 
   // Adds the visual chat typing message
