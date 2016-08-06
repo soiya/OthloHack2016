@@ -37,7 +37,8 @@ ul li {
 	margin: 0;
 	padding: 5px 0 0 5px;
 	border-bottom: 1px solid  #ccc;
-	/*font-size: 1.5em;*/
+	font-size: 2em;
+	line-height: 1.75;
 	height: 2em;
 	display: block;
 }
@@ -72,7 +73,9 @@ ul li:nth-child(2n) {
 ul li > i {
 	float: right;
 	padding-right: 10px;
-	padding-top: 2px;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
 	color: #ccc;
 }
 /* 入力窓 */

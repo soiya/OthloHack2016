@@ -1,29 +1,54 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="utf-8">
-  <title>チャットサンプル</title>
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0" />
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <link rel="stylesheet" href="/stylesheets/bootstrap.css">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<title>Chatbook</title>
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+	<!-- Bootstrap -->
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<!-- Icons -->
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+	<!-- CSS+JavaScript -->
+	<link rel="stylesheet" href="../../tashima/css/style.css">
+	<script src="../../tashima/js/motion.js"></script>
 </head>
 <body>
- 
-  <div class="page-header">
-    <h3>題名</h3>
-  </div>
-  <div class="hero-unit">
+	<header contenteditable="true">Chatbook</header>
+	<div id="main">
+		<div class="row">
+			<div id="chat-area" class="col-md-12">
+				<ul id="comments">
+				</ul>
+			</div>
+		</div>
+		<div class="row button-branch">
+			<div class="col-md-12">
+				<div class="btn-group">
+					<button onClick="send()" class="btn btn-default btn-lg btn-question"><i class="fa fa-question"></i></button>
+					<button onClick="send()" class="btn btn-default btn-lg btn-answer"><i class="fa fa-lightbulb-o"></i></button>
+					<button onClick="send()" class="btn btn-default btn-lg btn-submit"><i class="fa fa-comment"></i></button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<input type="text" id="message" placeholder="入力してください">
+	</footer>
+
+  <!-- <div class="hero-unit">
     <div class="input-append">
       <input class="span5" id="message" type="text" placeholder="入力してください">
       <button class="btn btn-primary" type="button" onclick="send()">送信</button>
     </div>
     <div id="chat-area" style="height: 300px; overflow: scroll;"></div>
-  </div>
- 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-  <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/js/bootstrap.min.js"></script>
+  </div> -->
+
   <script src="/socket.io/socket.io.js"></script>
-  <script src="/javascripts/chat.js"></script>
+  <script src="../javascripts/chat.js"></script>
 </body>
 </html>
