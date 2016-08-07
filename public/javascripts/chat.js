@@ -6,14 +6,13 @@ var count = 0;
 //コンストラクタみたいなやつ
 socket.on('connect',function() {
   console.log('サーバーと接続しました。');
-  socket.emit('log connect', 'math');
-  socket.emit('log load', 'math');
+  socket.emit('log connect', 1);
 });
 
 //ログ読み出し用
 socket.on('log-receive', function (str) {
   // console.log(str);
-  if(count < 6){
+  if(count < 8){
     $("div#chat-area>ul#comments").prepend('<li>' + str + '<i class="fa fa-star-o"></i></li>');
     hosi();
     count++;
