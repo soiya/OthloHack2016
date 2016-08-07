@@ -8,13 +8,14 @@ var app = express()
   , server = require('http').createServer(app)
   , io = io.listen(server);
 var mysql = require('mysql');
-var TABLE = 'math';
+var TABLE = "math";
 var client = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : 'nao0426',
-  database: 'chatlog'
+      host     : 'localhost',
+      user     : 'root',
+      password : 'nao0426',
+      database: 'chatlog'
 });
+
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
@@ -37,7 +38,7 @@ server.listen(app.get('port'))
 io.sockets.on('connection', function(socket) {
   
   //接続が確立された時に呼ばれる
-  socket.on('log connect', function () {
+  socket.on('log connect', function (str) {
     client.query(
       'select comment from ' + TABLE,
       function (err, result, field) {

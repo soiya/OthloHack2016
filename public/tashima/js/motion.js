@@ -16,6 +16,8 @@ $(function () {
 	//リストアイテムに星をつける
 	$listItem.on('click', function() {
 		var index = $listItem.index(this)+1;
+		//debug
+		console.log(index);
 		//星span取得
 		var $star = $(this).children('i');
 		//星をトグルでつけたり消したりする（枠星のクラス削除→星のクラス追加）

@@ -1,0 +1,96 @@
+a:hover {
+	text-decoration: none;
+}
+body {
+	width: 100%;
+}
+header {
+	width: 100%;
+	height: 100px;
+	line-height: 100px;
+	text-align: center;
+	font-weight: 100;
+	background: linear-gradient(45deg, #4fa49a 25%, #4361c2 75%);
+	font-weight: 100;
+	color: #fff;
+	font-size: 36px;
+}
+#main {
+	width: 100%;
+	margin: 0 auto;
+}
+.row {
+	width: 100%;
+	margin: 0;
+	padding: 10px 0;
+}
+.row .col-md-12 {
+	margin: 0;
+	padding: 0;
+}
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+ul li {
+	margin: 0;
+	padding: 5px 0 0 5px;
+	border-bottom: 1px solid  #ccc;
+	font-size: 2em;
+	line-height: 1.75;
+	height: 2em;
+	display: block;
+}
+ul li:nth-child(2n) {
+	background-color: #eee;
+}
+.class-name {
+	margin: 10px auto;
+	text-align: center;
+	display: block;
+	height: 100px;
+	line-height: 100px;
+	width: 80%;
+	background-color: #cfc;
+	letter-spacing: .5em;
+}
+
+/* ボタン */
+.row.button-branch {
+	position: fixed;
+	bottom: 2em;
+	visibility: hidden;
+}
+.btn {
+	width: 20vw;
+}
+.btn-group {
+	margin-left: 20vw;
+	text-align: center;
+}
+/* 星 */
+ul li > i {
+	float: right;
+	padding-right: 10px;
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #ccc;
+}
+/* 入力窓 */
+footer {
+	position: fixed;
+	width: 100%;
+	bottom: 0;
+}
+footer input {
+	width: 100%;
+	height: 2em;
+	outline: 0;
+		border: 1px solid #999;
+	/*box-shadow: 0 0 3px 3px #ccc;*/
+}
+footer input:focus {
+	border: 1px solid orange;
+}
