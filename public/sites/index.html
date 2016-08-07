@@ -7,15 +7,15 @@
 	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 	<title>Chatbook</title>
 	<!-- jQuery -->
-	<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+	<script src="../tashima/js/jquery-3.1.0.min.js"></script>
 	<!-- Bootstrap -->
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+	<link href="../tashima/css/bootstrap.min.css" rel="stylesheet">
+	<script src="../tashima/js/bootstrap.min.js"></script>
 	<!-- Icons -->
-	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+	<link rel="stylesheet" href="../tashima/css/font-awesome.min.css">
 	<!-- CSS+JavaScript -->
-	<link rel="stylesheet" href="../../tashima/css/style.css">
-	<script src="../../tashima/js/motion.js"></script>
+	<link rel="stylesheet" href="../tashima/css/style.css">
+	<script src="../tashima/js/motion.js"></script>
 </head>
 <body>
 	<header contenteditable="true">Chatbook</header>
@@ -23,14 +23,31 @@
 		<div class="row">
 			<div id="chat-area" class="col-md-12">
 				<ul id="comments">
+					<li>あああああああ<i class="fa fa-star-o"></i></li>
+					<li>あああああああ<i class="fa fa-star-o"></i></li>
+					<li>あああああああ<i class="fa fa-star-o"></i></li>
+					<li>あああああああ<i class="fa fa-star-o"></i></li>
+					<li>あああああああ<i class="fa fa-star-o"></i></li>
+					<li>あああああああ<i class="fa fa-star-o"></i></li>
+					<li>あああああああ<i class="fa fa-star-o"></i></li>
+					<li>あああああああ<i class="fa fa-star-o"></i></li>
+					<li>あああああああ<i class="fa fa-star-o"></i></li>
+					<li>あああああああ<i class="fa fa-star-o"></i></li>
+					<li>あああああああ<i class="fa fa-star-o"></i></li>
+					<li>あああああああ<i class="fa fa-star-o"></i></li>
+					<li>あああああああ<i class="fa fa-star-o"></i></li>
+					<li>あああああああ<i class="fa fa-star-o"></i></li>
+					<li>あああああああ<i class="fa fa-star-o"></i></li>
+					<li>あああああああ<i class="fa fa-star-o"></i></li>
+					<li>あああああああ<i class="fa fa-star-o"></i></li>
 				</ul>
 			</div>
 		</div>
 		<div class="row button-branch">
 			<div class="col-md-12">
 				<div class="btn-group">
-					<button onClick="send()" class="btn btn-default btn-lg btn-question"><i class="fa fa-question"></i></button>
-					<button onClick="send()" class="btn btn-default btn-lg btn-answer"><i class="fa fa-lightbulb-o"></i></button>
+					<button onClick="send(q)" class="btn btn-default btn-lg btn-question"><i class="fa fa-question"></i></button>
+					<button onClick="send(a)" class="btn btn-default btn-lg btn-answer"><i class="fa fa-lightbulb-o"></i></button>
 					<button onClick="send()" class="btn btn-default btn-lg btn-submit"><i class="fa fa-comment"></i></button>
 				</div>
 			</div>
@@ -39,16 +56,7 @@
 	<footer>
 		<input type="text" id="message" placeholder="入力してください">
 	</footer>
-
-  <!-- <div class="hero-unit">
-    <div class="input-append">
-      <input class="span5" id="message" type="text" placeholder="入力してください">
-      <button class="btn btn-primary" type="button" onclick="send()">送信</button>
-    </div>
-    <div id="chat-area" style="height: 300px; overflow: scroll;"></div>
-  </div> -->
-
-  <script src="/socket.io/socket.io.js"></script>
+	<script src="/socket.io/socket.io.js"></script>
   <script src="../javascripts/chat.js"></script>
 </body>
 </html>
