@@ -36,6 +36,10 @@ function send() {
   socket.emit('message:send', { message: msg });
 }
 
+function install(){
+  socket.emit('install pdf','');
+}
+
 //星
 function hosi() {
 	var $button = $('.btn-group');	//ボタン

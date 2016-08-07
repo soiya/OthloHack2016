@@ -74,5 +74,8 @@ io.sockets.on('connection', function(socket) {
     //自分を含む全員宛てにメッセージを送信します。通常のチャットの発言に使える処理です。
     io.sockets.emit('message:receive', { message: data.message });
   });
-  
+  socket.on('install pdf',function(){
+    
+  });
+
 });
