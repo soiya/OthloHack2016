@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<title>Chatbook</title>
+	<!-- jQuery -->
+	<script src="../tashima/js/jquery-3.1.0.min.js"></script>
+	<!-- Bootstrap -->
+	<link href="../tashima/css/bootstrap.min.css" rel="stylesheet">
+	<script src="../tashima/js/bootstrap.min.js"></script>
+	<!-- Icons -->
+	<link rel="stylesheet" href="../tashima/css/font-awesome.min.css">
+	<!-- CSS+JavaScript -->
+	<link rel="stylesheet" href="../tashima/css/style.css">
+	<script src="../tashima/js/motion.js"></script>
+</head>
+<body>
+	<header contenteditable="true">Chatbook</header>
+	<div id="main">
+		<div class="row">
+			<div id="chat-area" class="col-md-12">
+				<ul id="comments">
+				</ul>
+			</div>
+		</div>
+		<div class="row button-branch">
+			<div class="col-md-12">
+				<div class="btn-group">
+					<button onClick="send(Q)" class="btn btn-default btn-lg btn-question"><i class="fa fa-question"></i></button>
+					<button onClick="send(A)" class="btn btn-default btn-lg btn-answer"><i class="fa fa-lightbulb-o"></i></button>
+					<button onClick="send()" class="btn btn-default btn-lg btn-submit"><i class="fa fa-comment"></i></button>
+					<button onClick="window.location.href='favorite.html'" class="btn btn-default btn-lg btn-submit"><i class="fa fa-star"></i></button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<input type="text" id="message" placeholder="入力してください">
+	</footer>
+	<script src="/socket.io/socket.io.js"></script>
+  <script src="../javascripts/chat.js"></script>
+</body>
+</html>

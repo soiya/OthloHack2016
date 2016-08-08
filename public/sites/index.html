@@ -14,32 +14,37 @@
 	<!-- Icons -->
 	<link rel="stylesheet" href="../tashima/css/font-awesome.min.css">
 	<!-- CSS+JavaScript -->
-	<link rel="stylesheet" href="../tashima/css/style.css">
+	<link rel="stylesheet" href="../css/style.css">
 	<script src="../tashima/js/motion.js"></script>
 </head>
 <body>
-	<header contenteditable="true">Chatbook</header>
+	<header>Chatbook</header>
 	<div id="main">
 		<div class="row">
-			<div id="chat-area" class="col-md-12">
-				<ul id="comments">
-				</ul>
+			<div class="col-md-12">
+				<h1 style="text-align:center;">人類平和学概論</h1>
 			</div>
 		</div>
-		<div class="row button-branch">
+		<div class="row">
 			<div class="col-md-12">
-				<div class="btn-group">
-					<button onClick="send(q)" class="btn btn-default btn-lg btn-question"><i class="fa fa-question"></i></button>
-					<button onClick="send(a)" class="btn btn-default btn-lg btn-answer"><i class="fa fa-lightbulb-o"></i></button>
-					<button onClick="send()" class="btn btn-default btn-lg btn-submit"><i class="fa fa-comment"></i></button>
-				</div>
+				<div class="class-date"><a href="../sites/chat.html">第1回</a></div>
+				<div class="class-date"><a href="../sites/index.html">第2回</a></div>
+				<div class="class-date"><a href="../sites/index.html">第3回</a></div>
+				<div class="class-date"><a href="../sites/index.html">第4回</a></div>
+				<div class="class-date"><a href="../sites/index.html">第5回</a></div>
 			</div>
 		</div>
 	</div>
-	<footer>
-		<input type="text" id="message" placeholder="入力してください">
-	</footer>
-	<script src="/socket.io/socket.io.js"></script>
-  <script src="../javascripts/chat.js"></script>
+	</div>
+	<!-- 確認 -->
+	<script>
+		var arg = new Object;
+		var pair = location.search.substring(1).split('&');
+		for(var i=0;pair[i];i++){
+			var kv = pair[i].split('=');
+			arg[kv[0]] = kv[1];
+		}
+		console.log(arg);
+	</script>
 </body>
 </html>

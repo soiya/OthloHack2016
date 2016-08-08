@@ -1,8 +1,7 @@
-
 var express = require('express')
   , http = require('http')
   , path = require('path')
-  , io = require('socket.io')
+  , io = require('socket.io');
 
 var app = express()
   , server = require('http').createServer(app)
@@ -15,7 +14,8 @@ var client = mysql.createConnection({
       password : 'nao0426',
       database: 'chatlog'
 });
-
+var PDFDocument = require('pdfkit');
+var fs = require('fs');
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
@@ -74,8 +74,36 @@ io.sockets.on('connection', function(socket) {
     //自分を含む全員宛てにメッセージを送信します。通常のチャットの発言に使える処理です。
     io.sockets.emit('message:receive', { message: data.message });
   });
+  
   socket.on('install pdf',function(){
-    
+    var D = new Date() ;
+    var year = D.getFullYear();
+    var month = D.getMonth()+1;
+    var day = D.getDate();
+    var pdfdoc = new PDFDocument;
+
+    client.query(
+      'select comment from ' + "math_favorite",
+      function (err, result, field) {
+        if (err) {
+          throw err;
+        }
+        pdfdoc.pipe(fs.createWriteStream('public/pdfs/output.pdf'));
+        pdfdoc.fontSize(25).text(year+'-'+month+'-'+day+" notebook", 100, 80);
+        for(var i = 0; i < 3; i++){
+          var iconv = require('Iconv');
+          var conv = new iconv.Iconv('utf8', 'UTF-16BE');
+          var bom = "\xFE\xFF";
+          // pdfdoc.font('public/fonts/ume-hgo4.ttf').fontSize(8).text(bom + conv.convert(result[i].comment).toString());
+          pdfdoc.font('public/fonts/ume-hgo4.ttf').fontSize(12).text("・"+result[i].comment);
+        }
+        // client.end();
+        pdfdoc.end();
+        io.to(socket.id).emit('pdf download', '');
+      });
+   
+
+   console.log("pdf Accept");
   });
 
 });

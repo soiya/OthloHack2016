@@ -2,42 +2,30 @@
 <html lang="ja">
 <head>
 	<meta charset="UTF-8">
-	<title>Home</title>
+	<title>Chatbook</title>
 	<!-- jQuery -->
 	<script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
 	<!-- Bootstrap -->
 	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="./tashima/css/style-top.css">
 </head>
 <body>
-	<header>みんつく</header>
-	<div id="main">
-		<div class="row">
-			<div class="col-md-12">
-				<h1 style="text-align:center;">日付一覧</h1>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-md-12">
-				<a href="sites/index.html"><div class="class-name">AA/AA</div></a>
-				<a href="home.html?class=02"><div class="class-name">BB/BB</div></a>
-				<a href="home.html?class=03"><div class="class-name">CC/CC</div></a>
-				<a href="home.html?class=04"><div class="class-name">DD/DD</div></a>
-				<a href="home.html?class=05"><div class="class-name">EE/EE</div></a>
-			</div>
-		</div>
+	<div class="bg"></div>
+	<main>
+		<img src="./tashima/img/logo.png" alt="">
+		<h1>Chatbook</h1>
+		<p class="input" contenteditable="true">学籍番号</p>
+		<a href="./sites/index.html">SIGN UP</a>
+	</main>
 	</div>
-	</div>
-	<!-- 確認 -->
-	<!--<script>
-		var arg = new Object;
-		var pair = location.search.substring(1).split('&');
-		for(var i=0;pair[i];i++){
-			var kv = pair[i].split('=');
-			arg[kv[0]] = kv[1];
-		}
-		console.log(arg);
-	</script>-->
+	<script>
+		$(function(){
+			$text = $('p.input');
+			$('p.input').on('focus', function(){
+				$text.text('');
+			});
+		});
+	</script>
 </body>
 </html>

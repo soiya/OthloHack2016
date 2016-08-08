@@ -25,8 +25,16 @@ socket.on('message:receive', function (data) {
   $("div#chat-area>ul#comments").prepend('<li>' + data.message + '<i class="fa fa-star-o"></i></li>');
 });
 
+socket.on('pdf download', function () {
+  // document.location  = "/pdfs/output.pdf";
+  // window.location.href = "https://syncer.jp/" ;
+  // window.location.href = "/pdfs/output.pdf";
+	window.open('/pdfs/output.pdf', '_blank'); 
+});
+
 //コメントの送信
 function send() {
+  console.log("send Accept");
 	//入力窓の値を取得
   var msg = $("input#message").val();
 	//入力窓をリセット
@@ -37,6 +45,7 @@ function send() {
 }
 
 function install(){
+  console.log("pdf Accept");
   socket.emit('install pdf','');
 }
 
@@ -46,6 +55,17 @@ function hosi() {
 	var $listItem = $('ul#comments > li');	//リストアイテム(コメント)
 	var $messageInput = $('#message');	//入力窓
   
+//入力窓のフォーカスによるボタンのトグル
+	$messageInput.on('focus', function() {
+		$button.css('visibility','visible');
+	});
+	$messageInput.on('blur', function() {
+		//入力窓が空欄ならボタンを消す(入力中かどうか判断する)
+		if ($('footer>input#message').val()==='') {
+			$button.css('visibility','hidden');
+		}
+	});
+
 	//リストアイテムに星をつける
 	$listItem.on('click', function() {
 		var index = $listItem.index(this)+1;
@@ -54,29 +74,6 @@ function hosi() {
 		//星span取得
 		var $star = $(this).children('i');
     star.css('color','yellow');
-    // if(index%2 == 0 && $star.hasClass('fa-star')){
-    //   $star.removeClass('fa-star');
-    //   $star.addClass('fa-star-o');
-    // }
-    // console.log($star.hasClass('fa-star-o'));
-    
-    // $star.removeClass('fa-star-o');
-		// 	$star.addClass('fa-star').css('color','yellow');
-
-    // $star.removeClass('fa-star-o');
-    // $star.addClass('fa-star').css('color','yellow');
-
-		//星をトグルでつけたり消したりする（枠星のクラス削除→星のクラス追加）
-
-    
-
-		// if ($star.hasClass('fa-star-o')) {
-		// 	$star.removeClass('fa-star-o');
-		// 	$star.addClass('fa-star').css('color','yellow');
-		// } else {
-		// 	$star.removeClass('fa-star');
-		// 	$star.addClass('fa-star-o').css('color','#ccc');
-		// }
 	});
 }
 

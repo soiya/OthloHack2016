@@ -27,14 +27,14 @@ socket.on('message:receive', function (data) {
 
 //コメントの送信
 function send() {
-	//入力窓の値を取得
-  var msg = $("input#message").val();
+	var msg = $("input#message").val();
 	//入力窓をリセット
   $("input#message").val("");
   //サーバーへデータの送信
 	//取得した値を送信
   socket.emit('message:send', { message: msg });
 }
+
 
 //星
 function hosi() {
